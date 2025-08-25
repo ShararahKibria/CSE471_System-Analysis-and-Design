@@ -1,0 +1,602 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Aug 23, 2025 at 10:42 PM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.0.30
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `car_db`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cache`
+--
+
+CREATE TABLE `cache` (
+  `key` varchar(255) NOT NULL,
+  `value` mediumtext NOT NULL,
+  `expiration` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `cache_locks`
+--
+
+CREATE TABLE `cache_locks` (
+  `key` varchar(255) NOT NULL,
+  `owner` varchar(255) NOT NULL,
+  `expiration` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `car_catergories`
+--
+
+CREATE TABLE `car_catergories` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `seat_capacity` int(11) NOT NULL,
+  `price_per_day` int(11) NOT NULL,
+  `image_url` varchar(255) NOT NULL,
+  `description` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `car_catergories`
+--
+
+INSERT INTO `car_catergories` (`id`, `name`, `seat_capacity`, `price_per_day`, `image_url`, `description`, `created_at`, `updated_at`) VALUES
+(1, 'Toyota Corolla', 5, 45, 'https://drive.google.com/uc?export=view&id=1mLlHEXpWTkSdIU1BAIbYtaJyUX86qdr6', 'family', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(2, 'Honda Civic', 5, 50, 'https://drive.google.com/uc?export=view&id=1uC3jPwLsCL4S1fsWtf1L-uUBN20cNbk_', 'family', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(3, 'Ford Explorer', 7, 80, 'https://drive.google.com/uc?export=view&id=1NJFtWmLy7i1BVmCcPcf1OE4sdHoOx-5B', 'family', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(4, 'Kia Carnival', 8, 90, 'https://drive.google.com/uc?export=view&id=1Pir4PNFHBqDsSrvKAIUqYqHwAF3mLSxx', 'family', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(5, 'Toyota Sienna', 7, 85, 'https://drive.google.com/uc?export=view&id=1c5H_dahBrn6O3UODkDoV3GtHrrTTJDXk', 'family', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(6, 'Hyundai Staria', 9, 95, 'https://drive.google.com/uc?export=view&id=10kREELmGkhhS880wFcERGIiMKR9cM8HC', 'family', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(7, 'Mazda CX-5', 5, 75, 'https://drive.google.com/uc?export=view&id=1KSfvg8rgEm4HlnAArzlAWwzOIfxQVJJe', 'family', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(8, 'Honda CR-V', 5, 70, 'https://drive.google.com/uc?export=view&id=18qJ9ca1tLWECadhAu4cU5PPNUotOb93p', 'family', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(9, 'Toyota Highlander', 7, 95, 'https://drive.google.com/uc?export=view&id=1G_-o5PZt0IaUi0lfWk6ZAyzeMtRgjKL-', 'family', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(10, 'Nissan Pathfinder', 7, 88, 'https://drive.google.com/uc?export=view&id=1ZhOf2jVOdLERqO3Q5Z4uKnerkYxQqd5b', 'family', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(11, 'Kia Sorento', 7, 82, 'https://drive.google.com/uc?export=view&id=1veJOmGS5tLxymPlw2sLrxzBBREr56WYP', 'family', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(12, 'Hyundai Santa Fe', 5, 78, 'https://drive.google.com/uc?export=view&id=1ZlqgibTwqNl5mia5mtq4pRAbLI1GOTuQ', 'family', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(13, 'Chevrolet Tahoe', 7, 120, 'https://drive.google.com/uc?export=view&id=1s6UXbDqVhrwTXQP1wXHOz4uyoRuHsB0g', 'family', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(14, 'GMC Yukon', 7, 125, 'https://drive.google.com/uc?export=view&id=1WH7rqNbDN5L8QJhb4sk3NBq9YnKCguC1', 'family', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(15, 'Toyota Camry', 5, 60, 'https://drive.google.com/uc?export=view&id=1T9jo3PLwIzlc9zIOn37NqDKzmRCwAslo', 'family', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(16, 'Subaru Outback', 5, 68, 'https://drive.google.com/uc?export=view&id=1Xd-KR9Aar_zfO-0o5_9KT-PAFAnwVkyB', 'family', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(17, 'Volkswagen Passat', 5, 65, 'https://drive.google.com/uc?export=view&id=112plaFoiwMmLhXwEB4K8Erdi17U4Fy5p', 'family', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(18, 'Peugeot 5008', 7, 77, 'https://drive.google.com/uc?export=view&id=1ufjjRJNfLJtTsAHw4ORkx4j0BtA0537f', 'family', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(19, 'Skoda Kodiaq', 7, 79, 'https://drive.google.com/uc?export=view&id=1V1mrg2QRHDWD0XTso_3_qUYZQTFkKKl4', 'family', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(20, 'Mitsubishi Outlander', 7, 83, 'https://drive.google.com/uc?export=view&id=12xMSMxe9RtMp1Gi0MK3wMPv_wT6zdfFQ', 'family', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(21, 'Ford Edge', 5, 72, 'https://drive.google.com/uc?export=view&id=1sEk3Qg8O3DitJFYj5YDmo-EJsqEDfgN5', 'family', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(22, 'Hyundai Tucson', 5, 74, 'https://drive.google.com/uc?export=view&id=1aM7cUoHmPaeuiEGhv7JygV0BxJv_M3zz', 'family', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(23, 'BMW 5 Series', 5, 150, 'https://drive.google.com/uc?export=view&id=1YoXzKmJlu4nfSOJXNEZyCl6aenXFkOY3', 'luxury', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(24, 'Mercedes E-Class', 5, 160, 'https://drive.google.com/uc?export=view&id=1uzJRNgcyj9GRhLJjcBFp5oFDXtXgYa9q', 'luxury', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(25, 'Audi A6', 5, 155, 'https://drive.google.com/uc?export=view&id=1tOmZdbEb5ij_m8R0ixTbkigyaVQushbq', 'luxury', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(26, 'Lexus RX 350', 5, 140, 'https://drive.google.com/uc?export=view&id=1oMgDY4PXOI9rXd845zpayTMZXhR7OGhn', 'luxury', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(27, 'Tesla Model S', 5, 170, 'https://drive.google.com/uc?export=view&id=1HNUT06iNoXN7TTGV0m4SQ4hEjMNTfJXP', 'luxury', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(28, 'Tesla Model X', 7, 190, 'https://drive.google.com/uc?export=view&id=1mBW4DTpgveP9kA3cO2E317eNzmtu1lEp', 'luxury', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(29, 'Jaguar XF', 5, 165, 'https://drive.google.com/uc?export=view&id=1nnisTR1glAmV0Y7g5dESnc6IQ_U8vrhZ', 'luxury', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(30, 'Porsche Cayenne', 5, 200, 'https://drive.google.com/uc?export=view&id=13XTNBzaufg_zeoq486QbChDpQcOc6UX_', 'luxury', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(31, 'Range Rover Sport', 5, 220, 'https://drive.google.com/uc?export=view&id=1ti0UvDIXIcrGfK-inSm5vD_ruico9iEp', 'luxury', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(32, 'BMW X5', 5, 185, 'https://drive.google.com/uc?export=view&id=1ubfdorNUfNLuObE0d-fkXkfPRU-KrSZ8', 'luxury', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(33, 'Mercedes GLE', 5, 190, 'https://drive.google.com/uc?export=view&id=1dnWI94FCRIutBCGvIU-g-vCLd9_Op-hY', 'luxury', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(34, 'Audi Q7', 7, 175, 'https://drive.google.com/uc?export=view&id=1owpETCMS5RGVAMZVSqKq5CtHkBsAxqIx', 'luxury', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(35, 'Lamborghini Urus', 5, 500, 'https://drive.google.com/uc?export=view&id=1tREngU3ChEwWOxGxOpCouFYujaORCXkA', 'luxury', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(36, 'Rolls-Royce Cullinan', 5, 650, 'https://drive.google.com/uc?export=view&id=1CdaSf4cyR6Y_D6jyODq65y9C4jc-pYMH', 'luxury', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(37, 'Bentley Bentayga', 5, 600, 'https://drive.google.com/uc?export=view&id=1ZqHuhykY8nvHcFCwkURlr1Y6-hyUiz1A', 'luxury', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(38, 'Maserati Levante', 5, 300, 'https://drive.google.com/uc?export=view&id=1Ivi5Vl2YLB6ACIP_5BfxNdeKqS4gmUHV', 'luxury', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(39, 'Suzuki Alto', 4, 25, 'https://drive.google.com/uc?export=view&id=1YoXzKmJlu4nfSOJXNEZyCl6aenXFkOY3', 'emergency', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(40, 'Toyota Vitz', 4, 28, 'https://drive.google.com/uc?export=view&id=1uzJRNgcyj9GRhLJjcBFp5oFDXtXgYa9q', 'emergency', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(41, 'Nissan March', 4, 27, 'https://drive.google.com/uc?export=view&id=1tOmZdbEb5ij_m8R0ixTbkigyaVQushbq', 'emergency', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(42, 'Honda Fit', 4, 30, 'https://drive.google.com/uc?export=view&id=1oMgDY4PXOI9rXd845zpayTMZXhR7OGhn', 'emergency', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(43, 'Toyota Yaris', 4, 32, 'https://drive.google.com/uc?export=view&id=1HNUT06iNoXN7TTGV0m4SQ4hEjMNTfJXP', 'emergency', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(44, 'Mitsubishi Mirage', 4, 26, 'https://drive.google.com/uc?export=view&id=1mBW4DTpgveP9kA3cO2E317eNzmtu1lEp', 'emergency', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(45, 'Hyundai i10', 4, 24, 'https://drive.google.com/uc?export=view&id=1nnisTR1glAmV0Y7g5dESnc6IQ_U8vrhZ', 'emergency', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(46, 'Kia Picanto', 4, 25, 'https://drive.google.com/uc?export=view&id=13XTNBzaufg_zeoq486QbChDpQcOc6UX_', 'emergency', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(47, 'Chevrolet Spark', 4, 27, 'https://drive.google.com/uc?export=view&id=1ti0UvDIXIcrGfK-inSm5vD_ruico9iEp', 'emergency', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(48, 'Ford Figo', 4, 28, 'https://drive.google.com/uc?export=view&id=1ubfdorNUfNLuObE0d-fkXkfPRU-KrSZ8', 'emergency', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(49, 'Renault Kwid', 4, 26, 'https://drive.google.com/uc?export=view&id=1dnWI94FCRIutBCGvIU-g-vCLd9_Op-hY', 'emergency', '2025-08-13 13:32:19', '2025-08-13 13:32:19'),
+(50, 'Daihatsu Ayla', 4, 25, 'https://drive.google.com/uc?export=view&id=1owpETCMS5RGVAMZVSqKq5CtHkBsAxqIx', 'emergency', '2025-08-13 13:32:19', '2025-08-13 13:32:19');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `car_owners`
+--
+
+CREATE TABLE `car_owners` (
+  `id` int(11) NOT NULL,
+  `full_name` varchar(100) NOT NULL,
+  `phone` varchar(20) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `car_make` varchar(50) NOT NULL,
+  `car_model` varchar(50) NOT NULL,
+  `car_year` year(4) NOT NULL,
+  `car_color` varchar(20) DEFAULT NULL,
+  `license_plate` varchar(20) NOT NULL,
+  `vin` varchar(50) DEFAULT NULL,
+  `registration_document` varchar(255) DEFAULT NULL,
+  `insurance_document` varchar(255) DEFAULT NULL,
+  `car_condition` enum('Excellent','Good','Fair') DEFAULT 'Good',
+  `mileage` int(11) DEFAULT NULL,
+  `ownership_verified` tinyint(1) DEFAULT 0,
+  `location` varchar(255) DEFAULT NULL,
+  `availability` varchar(100) DEFAULT NULL,
+  `payment_method` enum('Cash','Bkash','Nagad','Bank Transfer') DEFAULT 'Cash',
+  `features` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`features`)),
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
+  `updated_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `password` varchar(255) DEFAULT NULL,
+  `approved` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `car_owners`
+--
+
+INSERT INTO `car_owners` (`id`, `full_name`, `phone`, `email`, `car_make`, `car_model`, `car_year`, `car_color`, `license_plate`, `vin`, `registration_document`, `insurance_document`, `car_condition`, `mileage`, `ownership_verified`, `location`, `availability`, `payment_method`, `features`, `created_at`, `updated_at`, `password`, `approved`) VALUES
+(1, 'Dipto Sumit', '017-197-1843', 'dipto71@gmail.com', 'Toyota', 'toyota supra', '2020', 'red', 'ABCDEFGH', '11111122', NULL, NULL, 'Good', 25, 0, 'mohammadpur dhaka', NULL, 'Cash', NULL, '2025-08-14 17:27:33', '2025-08-23 20:34:34', 'pass123', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `car_services`
+--
+
+CREATE TABLE `car_services` (
+  `id` int(11) NOT NULL,
+  `service_name` varchar(100) NOT NULL,
+  `price` decimal(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `car_services`
+--
+
+INSERT INTO `car_services` (`id`, `service_name`, `price`) VALUES
+(1, 'Engine Oil Change', 2500.00),
+(2, 'Brake Inspection & Repair', 3500.00),
+(3, 'Wheel Alignment & Balancing', 1500.00),
+(4, 'Air Conditioning Service', 3000.00),
+(5, 'Battery Check & Replacement', 8000.00),
+(6, 'Tire Replacement & Puncture Repair', 1200.00),
+(7, 'Engine Tune-Up', 4500.00),
+(8, 'Car Wash & Detailing', 1000.00);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `drivers`
+--
+
+CREATE TABLE `drivers` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `phone` varchar(15) NOT NULL,
+  `license_type` varchar(50) NOT NULL,
+  `latitude` decimal(10,7) NOT NULL,
+  `longitude` decimal(10,7) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `expected_salary` int(11) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 0,
+  `rating` decimal(3,1) NOT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `approved` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `drivers`
+--
+
+INSERT INTO `drivers` (`id`, `name`, `phone`, `license_type`, `latitude`, `longitude`, `address`, `expected_salary`, `image`, `status`, `rating`, `password`, `email`, `approved`) VALUES
+(1, 'Abdul Karim', '01710000001', 'Light', 23.8103310, 90.4125210, 'Dhaka', 18000, 'images/driver/Abdul.JPEG', 0, 8.2, 'pass123', 'abdul.karim@example.com', 0),
+(2, 'Shahidul Islam', '01710000002', 'Heavy', 22.3568510, 91.7831820, 'Chattogram', 25000, 'images/driver/Shahidul.JPEG', 0, 7.9, NULL, 'shahidul.islam@example.com', 0),
+(3, 'Kamrul Hasan', '01710000003', 'Light', 24.3745120, 88.6041660, 'Rajshahi', 20000, 'images/driver/Kamrul.JPEG', 0, 8.0, NULL, 'kamrul.hasan@example.com', 0),
+(4, 'Jahirul Haque', '01710000004', 'Motorbike', 22.8456410, 89.5403280, 'Khulna', 15000, 'images/driver/Jahirul.JPEG', 0, 7.5, NULL, 'jahirul.haque@example.com', 0),
+(5, 'Sajjad Hossain', '01710000005', 'Heavy', 24.7460190, 90.4202720, 'Mymensingh', 23000, 'images/driver/Sajjad.JPEG', 0, 8.4, NULL, 'sajjad.hossain@example.com', 0),
+(6, 'Nurul Amin', '01710000006', 'Light', 25.7438930, 89.2752270, 'Rangpur', 19000, 'images/driver/Nurul.JPEG', 0, 7.8, NULL, 'nurul.amin@example.com', 1),
+(7, 'Rafiqul Islam', '01710000007', 'Heavy', 24.9035610, 91.8736110, 'Sylhet', 24000, 'images/driver/Rafiqul.JPEG', 0, 8.6, NULL, 'rafiqul.islam@example.com', 0),
+(8, 'Saidur Rahman', '01710000008', 'Motorbike', 21.4272290, 92.0058060, 'Cox\'s Bazar', 16000, 'images/driver/Saidur.JPEG', 0, 7.2, NULL, 'saidur.rahman@example.com', 0),
+(9, 'Alamgir Kabir', '01710000009', 'Light', 23.6238000, 90.4993750, 'Narayanganj', 18500, 'images/driver/Alamgir.JPEG', 0, 8.3, NULL, 'alamgir.kabir@example.com', 0),
+(10, 'Mokbul Hossain', '01710000010', 'Heavy', 24.0000000, 89.2500000, 'Sirajganj', 22000, 'images/driver/Mokbul.JPEG', 0, 7.7, NULL, 'mokbul.hossain@example.com', 0),
+(51, 'Dipto Sumit', '01719718437', 'Light', 23.7731840, 90.4232960, 'J-73 Abdul munnaf shoroni', 2300, 'images/driver/Nurul.JPEG', 1, 5.0, '$2y$12$5dAGU3ZMTfJ1pVY5loenYOG5fSmlxPxO.4DouWHx4Mn5sqOK54B/q', 'diptosumit01@gmail.com', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `failed_jobs`
+--
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `uuid` varchar(255) NOT NULL,
+  `connection` text NOT NULL,
+  `queue` text NOT NULL,
+  `payload` longtext NOT NULL,
+  `exception` longtext NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jobs`
+--
+
+CREATE TABLE `jobs` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `queue` varchar(255) NOT NULL,
+  `payload` longtext NOT NULL,
+  `attempts` tinyint(3) UNSIGNED NOT NULL,
+  `reserved_at` int(10) UNSIGNED DEFAULT NULL,
+  `available_at` int(10) UNSIGNED NOT NULL,
+  `created_at` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `job_batches`
+--
+
+CREATE TABLE `job_batches` (
+  `id` varchar(255) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `total_jobs` int(11) NOT NULL,
+  `pending_jobs` int(11) NOT NULL,
+  `failed_jobs` int(11) NOT NULL,
+  `failed_job_ids` longtext NOT NULL,
+  `options` mediumtext DEFAULT NULL,
+  `cancelled_at` int(11) DEFAULT NULL,
+  `created_at` int(11) NOT NULL,
+  `finished_at` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mechanics`
+--
+
+CREATE TABLE `mechanics` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `phone` varchar(15) NOT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `specialty` varchar(100) DEFAULT NULL,
+  `latitude` decimal(10,7) NOT NULL,
+  `longitude` decimal(10,7) NOT NULL,
+  `address` varchar(255) NOT NULL,
+  `status` tinyint(1) NOT NULL DEFAULT 0,
+  `rating` decimal(3,1) NOT NULL,
+  `email` varchar(100) DEFAULT NULL,
+  `approved` tinyint(1) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `mechanics`
+--
+
+INSERT INTO `mechanics` (`id`, `name`, `phone`, `password`, `specialty`, `latitude`, `longitude`, `address`, `status`, `rating`, `email`, `approved`) VALUES
+(1, 'Rahim Auto Works', '01711223344', 'pass123', 'Car Repair', 23.7805730, 90.4075090, 'Gabtoli, Dhaka', 0, 8.5, 'rahim.autoworks@example.com', 0),
+(2, 'Karim Motors', '01822334455', NULL, 'Motorbike Repair', 23.7610370, 90.3824450, 'Mohammadpur, Dhaka', 0, 7.9, 'karim.motors@example.com', 0),
+(3, 'Alif Garage', '01733445566', NULL, 'Truck Repair', 23.7297220, 90.4113890, 'Jatrabari, Dhaka', 0, 6.8, 'alif.garage@example.com', 0),
+(4, 'Mizan Auto Service', '01644556677', NULL, 'Car AC & Electrical', 23.7464660, 90.3760150, 'Shyamoli, Dhaka', 0, 8.2, 'mizan.autoservice@example.com', 0),
+(5, 'Hasan Workshop', '01555667788', NULL, 'Bus Repair', 23.8025000, 90.4213890, 'Uttara, Dhaka', 0, 7.4, 'hasan.workshop@example.com', 0),
+(6, 'Babul Motors', '01766778899', NULL, 'Hybrid Car Specialist', 23.7436230, 90.3731340, 'Kallyanpur, Dhaka', 0, 9.1, 'babul.motors@example.com', 0),
+(7, 'Sajib Auto Care', '01877889900', NULL, 'Motorbike Repair', 23.7022220, 90.4288890, 'Demra, Dhaka', 0, 6.5, 'sajib.autocare@example.com', 0),
+(8, 'Akash Auto Service', '01788990011', NULL, 'Car Dent & Paint', 23.7686110, 90.3566670, 'Dhanmondi, Dhaka', 0, 8.7, 'akash.autoservice@example.com', 1),
+(9, 'Rashed Motors', '01799001122', NULL, 'CNG Conversion & Repair', 23.7172220, 90.4238890, 'Gopibagh, Dhaka', 0, 7.2, 'rashed.motors@example.com', 0),
+(10, 'Monir Garage', '01890011223', NULL, 'Heavy Vehicle Repair', 23.7855560, 90.3658330, 'Mirpur, Dhaka', 0, 6.9, 'monir.garage@example.com', 0),
+(11, 'Sharif Auto Zone', '01590112233', NULL, 'Car AC Service', 23.8150000, 90.4258330, 'Tongi, Dhaka', 0, 8.0, 'sharif.autozone@example.com', 0),
+(12, 'Fahim Motors', '01601122334', NULL, 'Motorbike Customization', 23.7305560, 90.3825000, 'Lalmatia, Dhaka', 0, 7.8, 'fahim.motors@example.com', 0),
+(13, 'Jewel Auto Works', '01712233445', NULL, 'Car Engine Specialist', 23.7688890, 90.4213890, 'Banani, Dhaka', 0, 9.3, 'jewel.autoworks@example.com', 0),
+(14, 'Shakil Garage', '01823344556', NULL, 'Small Truck Repair', 23.7547220, 90.3933330, 'Tejgaon, Dhaka', 0, 6.7, 'shakil.garage@example.com', 0),
+(15, 'Rafi Motors', '01734455667', NULL, 'Battery & Electrical', 23.7902780, 90.4072220, 'Bashundhara, Dhaka', 0, 8.4, 'rafi.motors@example.com', 0),
+(16, 'Dipto Sumit', '01719718437', 'dddddddd', '🚗 Car Repair, 🛞 Tire Service', 23.7731840, 90.4232960, 'J-73 Abdul munnaf shoroni', 1, 5.0, 'diptosumit01@gmail.com', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `migrations`
+--
+
+INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
+(1, '0001_01_01_000000_create_users_table', 1),
+(2, '0001_01_01_000001_create_cache_table', 1),
+(3, '0001_01_01_000002_create_jobs_table', 1),
+(4, '2025_08_13_105105_create_car_catergories_table', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `password_reset_tokens`
+--
+
+CREATE TABLE `password_reset_tokens` (
+  `email` varchar(255) NOT NULL,
+  `token` varchar(255) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reviews`
+--
+
+CREATE TABLE `reviews` (
+  `id` int(11) NOT NULL,
+  `driver_id` int(11) NOT NULL,
+  `reviewer_name` varchar(100) NOT NULL,
+  `rating` decimal(3,1) NOT NULL,
+  `comment` text NOT NULL,
+  `created_at` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `reviews`
+--
+
+INSERT INTO `reviews` (`id`, `driver_id`, `reviewer_name`, `rating`, `comment`, `created_at`) VALUES
+(1, 1, 'Md. Rakib Hasan', 9.0, 'Very punctual and polite driver. Always keeps the car clean.', '2025-07-02'),
+(2, 1, 'Sumaiya Akter', 8.5, 'Good driving skills and follows traffic rules. Could improve AC maintenance.', '2025-07-10'),
+(3, 1, 'Mahmudul Hasan', 9.2, 'Excellent on long trips, handles highways well.', '2025-07-15'),
+(4, 1, 'Farzana Haque', 8.8, 'Safe driving and very respectful. Knows Dhaka shortcuts well.', '2025-07-20'),
+(5, 1, 'Tanvir Chowdhury', 9.5, 'Very professional and courteous. Arrives ahead of time.', '2025-07-25'),
+(6, 1, 'Shakila Noor', 8.7, 'Comfortable ride and smooth driving style.', '2025-08-01'),
+(7, 1, 'Sabbir Ahmed', 9.1, 'Knows car mechanics well, helped during a breakdown.', '2025-08-05'),
+(8, 1, 'Sharmin Jahan', 8.4, 'Friendly and helpful. Slightly slow in heavy traffic.', '2025-08-07'),
+(9, 1, 'Kazi Arefin', 9.3, 'Extremely reliable and honest. Will hire again.', '2025-08-10'),
+(10, 1, 'Nusrat Jahan', 8.9, 'Good with navigation apps and avoids traffic jams efficiently.', '2025-08-13');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sessions`
+--
+
+CREATE TABLE `sessions` (
+  `id` varchar(255) NOT NULL,
+  `user_id` bigint(20) UNSIGNED DEFAULT NULL,
+  `ip_address` varchar(45) DEFAULT NULL,
+  `user_agent` text DEFAULT NULL,
+  `payload` longtext NOT NULL,
+  `last_activity` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `sessions`
+--
+
+INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
+('4ux6jZ3uH7PwMv3xebwdcJsCMAmhDyyFTvrCPymm', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/139.0.0.0 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoic290VTlrY2ptYjRuaEJoRmVUUXg4NlpKV2NRTmw2dVV0VmZFM0syTiI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6Mzc6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kcml2ZXJfYXBwcm92YWwiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjc6InVzZXJfaWQiO2k6MTtzOjEwOiJ1c2VyX2VtYWlsIjtzOjI3OiJyYWhpbS5hdXRvd29ya3NAZXhhbXBsZS5jb20iO3M6OToidXNlcl9yb2xlIjtzOjg6Im1lY2hhbmljIjtzOjEwOiJ1c2VyX3RhYmxlIjtzOjk6Im1lY2hhbmljcyI7fQ==', 1755981749);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `users`
+--
+
+CREATE TABLE `users` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `remember_token` varchar(100) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `cache`
+--
+ALTER TABLE `cache`
+  ADD PRIMARY KEY (`key`);
+
+--
+-- Indexes for table `cache_locks`
+--
+ALTER TABLE `cache_locks`
+  ADD PRIMARY KEY (`key`);
+
+--
+-- Indexes for table `car_catergories`
+--
+ALTER TABLE `car_catergories`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `car_owners`
+--
+ALTER TABLE `car_owners`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `vin` (`vin`);
+
+--
+-- Indexes for table `car_services`
+--
+ALTER TABLE `car_services`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `drivers`
+--
+ALTER TABLE `drivers`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
+
+--
+-- Indexes for table `jobs`
+--
+ALTER TABLE `jobs`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `jobs_queue_index` (`queue`);
+
+--
+-- Indexes for table `job_batches`
+--
+ALTER TABLE `job_batches`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `mechanics`
+--
+ALTER TABLE `mechanics`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `password_reset_tokens`
+--
+ALTER TABLE `password_reset_tokens`
+  ADD PRIMARY KEY (`email`);
+
+--
+-- Indexes for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `driver_id` (`driver_id`);
+
+--
+-- Indexes for table `sessions`
+--
+ALTER TABLE `sessions`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sessions_user_id_index` (`user_id`),
+  ADD KEY `sessions_last_activity_index` (`last_activity`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `users_email_unique` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `car_catergories`
+--
+ALTER TABLE `car_catergories`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+
+--
+-- AUTO_INCREMENT for table `car_owners`
+--
+ALTER TABLE `car_owners`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `car_services`
+--
+ALTER TABLE `car_services`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `drivers`
+--
+ALTER TABLE `drivers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+
+--
+-- AUTO_INCREMENT for table `failed_jobs`
+--
+ALTER TABLE `failed_jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `jobs`
+--
+ALTER TABLE `jobs`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `mechanics`
+--
+ALTER TABLE `mechanics`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `reviews`
+--
+ALTER TABLE `reviews`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `reviews`
+--
+ALTER TABLE `reviews`
+  ADD CONSTRAINT `reviews_ibfk_1` FOREIGN KEY (`driver_id`) REFERENCES `drivers` (`id`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
